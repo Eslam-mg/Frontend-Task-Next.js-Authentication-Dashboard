@@ -20,7 +20,7 @@ export default function InputField({ label, type = 'text', name, value, onChange
                 placeholder={placeholder}
                 required={required}
                 disabled={disabled}
-                className={`w-full px-4 py-3 bg-amber-600 rounded-md border outline-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${error ? 'border-red-500' : 'border-gray-300'} ${disabled ? 'bg-gray-100 cursor-not-allowed' : 'bg-white'}`}
+                className={`w-full px-4 py-3 rounded-md border outline-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${error ? 'border-red-500' : 'border-gray-300'} ${disabled ? 'bg-gray-100 cursor-not-allowed' : 'bg-white'}`}
                 {...props}
             />
 
