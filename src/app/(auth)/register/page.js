@@ -1,4 +1,5 @@
 "use client"
+import CountryCodeSelect from '@/components/CountryCodeSelect/CountryCodeSelect';
 import InputField from '@/components/InputField/InputField';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
@@ -100,6 +101,15 @@ export default function page() {
                             }
                         </button>
                     </div>
+
+                    <CountryCodeSelect
+                        label="Country Code"
+                        name="mobile_country_code"
+                        value={formData.mobile_country_code}
+                        onChange={handleChange}
+                        error={errors.mobile_country_code}
+                        required
+                    />
 
                     <InputField
                         label="Phone Number"
