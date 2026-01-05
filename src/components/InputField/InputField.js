@@ -24,7 +24,7 @@ export default function InputField({ label, type = 'text', name, value, onChange
                 {...props}
             />
 
-            <div className="absolute" aria-live="polite">
+            <div className="absolute top-full right-0" aria-live="polite">
                 {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
             </div>
         </div>
