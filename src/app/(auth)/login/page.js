@@ -1,6 +1,8 @@
 "use client"
 import InputField from '@/components/InputField/InputField';
 import SubmitButton from '@/components/SubmitButton/SubmitButton';
+import { authAPI } from '@/lib/api';
+import { authStorage } from '@/lib/auth';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
@@ -40,7 +42,48 @@ export default function page() {
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
-    
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!validateForm()) {
+            return;
+        }
+
+        setLoading(true);
+        setErrors({});
+
+        try {
+            const response = await authAPI.login(formData);
+
+            if (response.status && response.data) {
+                // Save token and user data
+                authStorage.setToken(response.data.token);
+                authStorage.setUser(response.data);
+
+                // Check if email is verified
+                if (response.data.email_verified_at === false || !response.data.email_verified_at) {
+                    // Redirect to verify page if not verified
+                    router.push('/verify');
+                } else {
+                    // Redirect to dashboard if verified
+                    router.push('/dashboard');
+                }
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+
+            if (error.errors) {
+                // Handle validation errors from API
+                setErrors(error.errors);
+            } else {
+                setErrors({ general: error.message || 'Login failed. Please check your credentials.' });
+            }
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
             <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
@@ -49,7 +92,7 @@ export default function page() {
                     <p className="text-gray-600">Sign in to your account</p>
                 </div>
 
-                <form className='flex flex-col gap-4' noValidate>
+                <form className='flex flex-col gap-4' onSubmit={handleSubmit} noValidate>
                     <InputField
                         label="Email"
                         type="email"

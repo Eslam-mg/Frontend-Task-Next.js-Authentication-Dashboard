@@ -2,6 +2,8 @@
 import CountryCodeSelect from '@/components/CountryCodeSelect/CountryCodeSelect';
 import InputField from '@/components/InputField/InputField';
 import SubmitButton from '@/components/SubmitButton/SubmitButton';
+import { authAPI } from '@/lib/api';
+import { authStorage } from '@/lib/auth';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
