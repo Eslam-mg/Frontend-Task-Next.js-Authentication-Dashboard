@@ -85,8 +85,8 @@ export default function page() {
                 authStorage.setToken(response.data.token);
                 authStorage.setUser(response.data);
 
-                // Redirect to verify page
-                router.push('/verify');
+                // Redirect to verify Account page
+                router.push('/verifyAccount');
             }
         } catch (error) {
             console.error('Registration error:', error);
