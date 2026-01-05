@@ -43,6 +43,17 @@ export default function page() {
                         placeholder="Enter your full name"
                         required
                     />
+
+                    <InputField
+                        label="Email"
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        error={errors.email}
+                        placeholder="Enter your email"
+                        required
+                    />
                 </form>
             </div>
         </div>

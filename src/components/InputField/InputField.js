@@ -5,7 +5,7 @@ export default function InputField({ label, type = 'text', name, value, onChange
     return (
         <div className='flex flex-col gap-1 relative'>
             {label && (
-                <label htmlFor={name} className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor={name} className="block text-sm font-medium text-gray-700">
                     {label}
                     {required && <span className="text-red-500 ml-1">*</span>}
                 </label>
