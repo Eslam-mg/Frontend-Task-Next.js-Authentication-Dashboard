@@ -100,6 +100,17 @@ export default function page() {
                             }
                         </button>
                     </div>
+
+                    <InputField
+                        label="Phone Number"
+                        type="tel"
+                        name="mobile"
+                        value={formData.mobile}
+                        onChange={handleChange}
+                        error={errors.mobile}
+                        placeholder="Enter your phone number"
+                        required
+                    />
                 </form>
             </div>
         </div>
