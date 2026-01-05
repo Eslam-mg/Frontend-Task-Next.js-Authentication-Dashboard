@@ -14,6 +14,15 @@ export default function page() {
     const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState({});
     const router = useRouter();
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+        // Clear error for this field when user types
+        if (errors[name]) {
+            setErrors(prev => ({ ...prev, [name]: '' }));
+        }
+    };
     return (
         <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
             <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
@@ -28,6 +37,7 @@ export default function page() {
                         type="email"
                         name="email"
                         value={formData.email}
+                        onChange={handleChange}
                         error={errors.email}
                         placeholder="Enter your email"
                         required
@@ -39,6 +49,7 @@ export default function page() {
                             type={showPassword ? 'text' : "password"}
                             name="password"
                             value={formData.password}
+                            onChange={handleChange}
                             error={errors.password}
                             placeholder="Enter your password"
                             required
