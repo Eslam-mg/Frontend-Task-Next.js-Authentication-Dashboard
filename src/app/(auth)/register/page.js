@@ -1,6 +1,7 @@
 "use client"
 import CountryCodeSelect from '@/components/CountryCodeSelect/CountryCodeSelect';
 import InputField from '@/components/InputField/InputField';
+import SubmitButton from '@/components/SubmitButton/SubmitButton';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
@@ -121,6 +122,15 @@ export default function page() {
                         placeholder="Enter your phone number"
                         required
                     />
+
+                    <SubmitButton
+                        type="submit"
+                        loading={loading}
+                        fullWidth
+                        variant="primary"
+                    >
+                        Create Account
+                    </SubmitButton>
                 </form>
             </div>
         </div>
