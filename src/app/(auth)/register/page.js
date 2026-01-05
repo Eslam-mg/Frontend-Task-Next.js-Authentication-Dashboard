@@ -63,6 +63,42 @@ export default function page() {
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!validateForm()) {
+            return;
+        }
+
+        setLoading(true);
+        setErrors({});
+
+        try {
+            const response = await authAPI.register(formData);
+
+            if (response.status && response.data) {
+                // Save token and user data
+                authStorage.setToken(response.data.token);
+                authStorage.setUser(response.data);
+
+                // Redirect to verify page
+                router.push('/verify');
+            }
+        } catch (error) {
+            console.error('Registration error:', error);
+
+            if (error.errors) {
+                // Handle validation errors from API
+                setErrors(error.errors);
+            } else {
+                setErrors({ general: error.message || 'Registration failed. Please try again.' });
+            }
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <div className='min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4'>
             <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
@@ -71,7 +107,7 @@ export default function page() {
                     <p className="text-gray-600">Sign up to get started</p>
                 </div>
 
-                <form className='flex flex-col gap-4'>
+                <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
                     <InputField
                         label="Full Name"
                         type="text"
