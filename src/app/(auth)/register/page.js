@@ -54,6 +54,20 @@ export default function page() {
                         placeholder="Enter your email"
                         required
                     />
+
+                    {/* password */}
+                    <div className='relative'>
+                        <InputField
+                            label="Password"
+                            type="password"
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            error={errors.password}
+                            placeholder="Enter your password"
+                            required
+                        />
+                    </div>
                 </form>
             </div>
         </div>
