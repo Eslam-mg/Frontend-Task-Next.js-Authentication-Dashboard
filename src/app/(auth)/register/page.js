@@ -28,6 +28,41 @@ export default function page() {
             setErrors(prev => ({ ...prev, [name]: '' }));
         }
     };
+
+    const validateForm = () => {
+        const newErrors = {};
+
+        if (!formData.name.trim()) {
+            newErrors.name = 'Full name is required';
+        }
+
+        if (!formData.email.trim()) {
+            newErrors.email = 'Email is required';
+        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+            newErrors.email = 'Email is invalid';
+        }
+
+        if (!formData.password) {
+            newErrors.password = 'Password is required';
+        } else if (formData.password.length < 8) {
+            newErrors.password = 'Password must be at least 8 characters';
+        }
+
+        if (formData.password !== formData.password_confirmation) {
+            newErrors.password_confirmation = 'Passwords do not match';
+        }
+
+        if (!formData.mobile.trim()) {
+            newErrors.mobile = 'Phone number is required';
+        }
+
+        if (!formData.mobile_country_code) {
+            newErrors.mobile_country_code = 'Country code is required';
+        }
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
     return (
         <div className='min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4'>
             <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
