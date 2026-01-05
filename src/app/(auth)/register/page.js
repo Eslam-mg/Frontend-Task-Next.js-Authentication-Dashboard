@@ -1,4 +1,5 @@
 "use client"
+import InputField from '@/components/InputField/InputField';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
@@ -21,6 +22,17 @@ export default function page() {
                     <h1 className="text-3xl font-bold text-gray-800 mb-2">Create Account</h1>
                     <p className="text-gray-600">Sign up to get started</p>
                 </div>
+
+                <form className='flex flex-col gap-4'>
+                    <InputField
+                        label="Full Name"
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        placeholder="Enter your full name"
+                        required
+                    />
+                </form>
             </div>
         </div>
     )
