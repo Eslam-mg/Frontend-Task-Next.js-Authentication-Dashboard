@@ -2,6 +2,7 @@
 import CountryCodeSelect from '@/components/CountryCodeSelect/CountryCodeSelect';
 import InputField from '@/components/InputField/InputField';
 import SubmitButton from '@/components/SubmitButton/SubmitButton';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
@@ -203,6 +204,13 @@ export default function page() {
                         Create Account
                     </SubmitButton>
                 </form>
+
+                <p className="mt-6 text-center text-gray-600">
+                    Already have an account?{' '}
+                    <Link href="/login" className="text-blue-600 hover:text-blue-700 font-medium">
+                        Sign in
+                    </Link>
+                </p>
             </div>
         </div>
     )
