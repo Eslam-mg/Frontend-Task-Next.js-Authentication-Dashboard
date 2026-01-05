@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
 export default function page() {
+    const [showPassword, setShowPassword] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -59,7 +60,7 @@ export default function page() {
                     <div className='relative'>
                         <InputField
                             label="Password"
-                            type="password"
+                            type={showPassword ? 'text' : "password"}
                             name="password"
                             value={formData.password}
                             onChange={handleChange}
@@ -67,6 +68,14 @@ export default function page() {
                             placeholder="Enter your password"
                             required
                         />
+
+                        <button type='button' onClick={() => { setShowPassword(!showPassword) }} aria-label={showPassword ? "Hide password" : "Show password"} className='flex items-center justify-center w-11 h-11 cursor-pointer absolute bottom-1 right-0'>
+                            {showPassword ?
+                                <svg className="" aria-hidden='true' width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /><circle cx={12} cy={12} r={3} /></svg>
+                                :
+                                <svg className="lucide lucide-eye-off-icon lucide-eye-off" aria-hidden='true' width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" /><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" /><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143" /><path d="m2 2 20 20" /></svg>
+                            }
+                        </button>
                     </div>
                 </form>
             </div>
