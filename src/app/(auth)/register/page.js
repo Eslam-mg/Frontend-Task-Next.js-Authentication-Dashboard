@@ -15,6 +15,15 @@ export default function page() {
     const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState({});
     useRouter();
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+        // Clear error for this field when user types
+        if (errors[name]) {
+            setErrors(prev => ({ ...prev, [name]: '' }));
+        }
+    };
     return (
         <div className='min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4'>
             <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
@@ -29,6 +38,7 @@ export default function page() {
                         type="text"
                         name="name"
                         value={formData.name}
+                        onChange={handleChange}
                         placeholder="Enter your full name"
                         required
                     />
