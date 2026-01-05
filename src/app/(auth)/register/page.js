@@ -39,6 +39,7 @@ export default function page() {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
+                        error={errors.name}
                         placeholder="Enter your full name"
                         required
                     />
