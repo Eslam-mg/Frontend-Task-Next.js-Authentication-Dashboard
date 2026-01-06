@@ -23,9 +23,9 @@ export default function Navbar() {
                     <Image src="/icon/mingcute_menu-fill.svg" alt="Menu icon" width={24} height={24} />
                 </button>
 
-                <div className={`flex-1 flex-col lg:flex-row items-center justify-between absolute lg:static top-20 left-0 w-full lg:w-auto bg-white lg:bg-transparent p-4 md:p-0 ${isOpen ? 'block' : 'hidden lg:flex'}`}>
+                <div className={`flex-1 flex-col lg:flex-row items-center justify-between absolute lg:static top-20 left-0 w-full lg:w-auto bg-white lg:bg-transparent pl-6 lg:pl-0 ${isOpen ? 'block' : 'hidden lg:flex'}`}>
                     {/* Links */}
-                    <ul className="w-full lg:w-fit flex flex-col gap-4 lg:flex-row lg:gap-6 mb-6 pl-6 lg:mb-0 lg:pl-0">
+                    <ul className="w-full lg:w-fit flex flex-col gap-4 lg:flex-row lg:gap-6 mb-6 lg:mb-0">
                         <li>
                             <Link href="#" className='flex items-center lg:justify-center gap-1'>
                                 <Image src="/icon/home-icon.svg" width={20} height={20} loading='lazy' className='' />
@@ -59,7 +59,7 @@ export default function Navbar() {
                     </ul>
 
                     {/* Utility Icons */}
-                    <div className="w-full lg:w-fit flex flex-col lg:flex-row lg:items-center lg:justify-center gap-6 pl-6 lg:pl-0">
+                    <div className="w-full lg:w-fit flex flex-col lg:flex-row lg:items-center lg:justify-center gap-6">
                         <button type='button' aria-label="Open shopping cart" className="flex items-center gap-1 cursor-pointer">
                             <Image src="/icon/shopping bag.svg" alt="Home" width={24} height={24} loading='lazy' />
                             <span className='block lg:hidden'>shopping cart</span>
