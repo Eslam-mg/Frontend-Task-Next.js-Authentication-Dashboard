@@ -28,31 +28,31 @@ export default function Navbar() {
                     <ul className="w-full lg:w-fit flex flex-col gap-4 lg:flex-row lg:gap-6 mb-6 lg:mb-0">
                         <li>
                             <Link href="#" className='flex items-center lg:justify-center gap-1'>
-                                <Image src="/icon/home-icon.svg" width={20} height={20} loading='lazy' className='' />
+                                <Image src="/icon/home-icon.svg" alt='home' width={20} height={20} loading='lazy' className='' />
                                 <span>Home</span>
                             </Link>
                         </li>
                         <li>
                             <Link href="#" className='flex items-center lg:justify-center gap-1'>
-                                <Image src="/icon/category-icon.svg" width={20} height={20} loading='lazy' className='' />
+                                <Image src="/icon/category-icon.svg" alt='category icon' width={20} height={20} loading='lazy' className='' />
                                 <span>Our Category</span>
                             </Link>
                         </li>
                         <li>
                             <Link href="#" className='flex items-center lg:justify-center gap-1'>
-                                <Image src="/icon/about-icon.svg" width={20} height={20} loading='lazy' className='' />
+                                <Image src="/icon/about-icon.svg" alt='about icon' width={20} height={20} loading='lazy' className='' />
                                 <span>About Us</span>
                             </Link>
                         </li>
                         <li>
                             <Link href="#" className='flex items-center lg:justify-center gap-1'>
-                                <Image src="/icon/contact-icon.svg" width={20} height={20} loading='lazy' className='' />
+                                <Image src="/icon/contact-icon.svg" alt='contact icon' width={20} height={20} loading='lazy' className='' />
                                 <span>Contact Us</span>
                             </Link>
                         </li>
                         <li>
                             <Link href="#" className='flex items-center lg:justify-center gap-1'>
-                                <Image src="/icon/faq-icon.svg" width={20} height={20} loading='lazy' className='' />
+                                <Image src="/icon/faq-icon.svg" alt='faqs icon' width={20} height={20} loading='lazy' className='' />
                                 <span>FAQs</span>
                             </Link>
                         </li>
@@ -61,7 +61,7 @@ export default function Navbar() {
                     {/* Utility Icons */}
                     <div className="w-full lg:w-fit flex flex-col lg:flex-row lg:items-center lg:justify-center gap-6">
                         <button type='button' aria-label="Open shopping cart" className="flex items-center gap-1 cursor-pointer">
-                            <Image src="/icon/shopping bag.svg" alt="Home" width={24} height={24} loading='lazy' />
+                            <Image src="/icon/shopping bag.svg" alt="shopping bag icon" width={24} height={24} loading='lazy' />
                             <span className='block lg:hidden'>shopping cart</span>
                         </button>
 
@@ -72,17 +72,17 @@ export default function Navbar() {
 
                         {/* Wishlist */}
                         <button type='button' aria-label="Wishlist" className="flex items-center gap-1 cursor-pointer">
-                            <Image src="/icon/love.svg" width={24} height={24} loading='lazy' />
+                            <Image src="/icon/love.svg" alt='heart icon' width={24} height={24} loading='lazy' />
                             <span className='block lg:hidden'>Wish list</span>
                         </button>
 
                         <button id="dropdownDefaultButton" aria-label="Language" type="button" className='flex flex-row items-center justify-center text-black cursor-pointer'>
                             <span>EN</span>
-                            <Image src="/icon/mingcute_down-line.svg" width={24} height={24} loading='lazy' />
+                            <Image src="/icon/mingcute_down-line.svg" alt='mingcute_down-line' width={24} height={24} loading='lazy' />
                         </button>
                         <button id="dropdownDefaultButton" aria-label="Language" type="button" className='flex flex-row items-center justify-center text-black cursor-pointer'>
-                            <Image src="/icon/user.svg" width={24} height={24} loading='lazy' />
-                            <Image src="/icon/mingcute_down-line.svg" width={24} height={24} loading='lazy' />
+                            <Image src="/icon/user.svg" alt='user icon' width={24} height={24} loading='lazy' />
+                            <Image src="/icon/mingcute_down-line.svg" alt='mingcute_down-line' width={24} height={24} loading='lazy' />
                         </button>
                     </div>
                 </div>
