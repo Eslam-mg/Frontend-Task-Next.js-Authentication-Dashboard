@@ -6,12 +6,19 @@ export default function ProtectedRoute() {
     const router = useRouter();
 
     useEffect(() => {
-        
-        return () => {
-            
-        };
-    }, []);
-    return (
-        <div>ProtectedRoute</div>
-    )
+        const token = authStorage.getToken();
+
+        if (!token) {
+            router.push('/login');
+        }
+    }, [router]);
+
+    // Check authentication
+    const token = authStorage.getToken();
+
+    if (!token) {
+        return null; // or a loading spinner
+    }
+    
+    return <>{children}</>;
 }
