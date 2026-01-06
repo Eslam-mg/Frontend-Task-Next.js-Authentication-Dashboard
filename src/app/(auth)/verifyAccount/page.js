@@ -39,6 +39,13 @@ export default function page() {
             inputRefs.current[index + 1]?.focus();
         }
     };
+
+    const handleKeyDown = (index, e) => {
+        // Handle backspace
+        if (e.key === 'Backspace' && !code[index] && index > 0) {
+            inputRefs.current[index - 1]?.focus();
+        }
+    };
     return (
         <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
             <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
@@ -78,6 +85,7 @@ export default function page() {
                                 maxLength={1}
                                 value={digit}
                                 onChange={(e) => handleChange(index, e.target.value)}
+                                onKeyDown={(e) => handleKeyDown(index, e)}
                                 className="w-12 h-14 text-center text-2xl font-bold border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 transition-all"
                             />
                         ))}
