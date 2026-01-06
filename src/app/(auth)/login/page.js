@@ -66,8 +66,8 @@ export default function page() {
                     // Redirect to verify page if not verified
                     router.push('/verify');
                 } else {
-                    // Redirect to dashboard if verified
-                    router.push('/dashboard');
+                    // Redirect to user Account if verified
+                    router.push('/userAccount');
                 }
             }
         } catch (error) {
