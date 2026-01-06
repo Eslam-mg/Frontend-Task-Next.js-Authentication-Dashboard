@@ -14,7 +14,7 @@ export default function page() {
 
     // Refs to manage focus for each code input box
     const inputRefs = useRef([]);
-    
+
     useEffect(() => {
         // Check if user has token, if not redirect to login
         const token = authStorage.getToken();
@@ -22,6 +22,23 @@ export default function page() {
             router.push('/login');
         }
     }, [router]);
+
+    const handleChange = (index, value) => {
+        // Only allow numbers
+        if (value && !/^\d$/.test(value)) {
+            return;
+        }
+
+        const newCode = [...code];
+        newCode[index] = value;
+        setCode(newCode);
+        setError('');
+
+        // Auto-focus next input
+        if (value && index < 5) {
+            inputRefs.current[index + 1]?.focus();
+        }
+    };
     return (
         <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
             <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
@@ -60,6 +77,7 @@ export default function page() {
                                 pattern="[0-9]*"
                                 maxLength={1}
                                 value={digit}
+                                onChange={(e) => handleChange(index, e.target.value)}
                                 className="w-12 h-14 text-center text-2xl font-bold border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 transition-all"
                             />
                         ))}
