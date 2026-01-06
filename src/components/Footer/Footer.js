@@ -6,7 +6,8 @@ export default function Footer() {
         <footer className="relative text-white">
             {/* Background */}
             <div className="absolute inset-0 -z-10">
-                <Image src="/image/kids-photography.png" alt="Footer background" fill className="object-cover" />
+                <Image src="/image/kids-photo-desktop.png" alt="kids-photo-desktop" fill className="object-cover hidden md:block" />
+                <Image src="/image/kids-photo-mobile.png" alt="kids-photo-mobile" fill className="object-cover object-right block md:hidden" />
                 <div className="absolute inset-0 bg-black/70" />
             </div>
 
@@ -14,7 +15,7 @@ export default function Footer() {
                 {/* Column 1 */}
                 <div className="col-span-2 lg:col-span-1">
                     {/* logo */}
-                    <Image src="/image/white-logo.png" alt="Tinytales logo" width={65} height={50} />
+                    <Image src="/image/white-logo.png" alt="copany logo" width={65} height={50} />
                     <p className="mt-4 text-sm text-gray-300 leading-relaxed">
                         Ipsum in eos qui consequatur ab cum maxime. Soluta dolor quae
                         ipsum in eos qui consequatur ab cum maxime.
@@ -67,12 +68,12 @@ export default function Footer() {
 
                     <h4 className="mb-3 text-lg font-semibold">Follow Us</h4>
                     <div className="flex gap-4">
-                        <Link aria-label="Facebook" href="#"><Image src="/icon/footer/facebook.svg" alt="" width={20} height={20} /></Link>
-                        <Link aria-label="Twitter" href="#"><Image src="/icon/footer/twitter.svg" alt="" width={20} height={20} /></Link>
-                        <Link aria-label="Instagram" href="#"><Image src="/icon/footer/instagram.svg" alt="" width={20} height={20} /></Link>
-                        <Link aria-label="LinkedIn" href="#"><Image src="/icon/footer/linkedin.svg" alt="" width={20} height={20} /></Link>
-                        <Link aria-label="WhatsApp" href="#"><Image src="/icon/footer/whatsapp.svg" alt="" width={20} height={20} /></Link>
-                        <Link aria-label="Telegram" href="#"><Image src="/icon/footer/telegram.svg" alt="" width={20} height={20} /></Link>
+                        <Link aria-label="Facebook" href="#"><Image src="/icon/footer/facebook.svg"alt="Facebook icon" width={20} height={20} /></Link>
+                        <Link aria-label="Twitter" href="#"><Image src="/icon/footer/twitter.svg" alt="twitter" width={20} height={20} /></Link>
+                        <Link aria-label="Instagram" href="#"><Image src="/icon/footer/instagram.svg" alt="instagram" width={20} height={20} /></Link>
+                        <Link aria-label="LinkedIn" href="#"><Image src="/icon/footer/linkedin.svg" alt="linkedin" width={20} height={20} /></Link>
+                        <Link aria-label="WhatsApp" href="#"><Image src="/icon/footer/whatsapp.svg" alt="whatsapp" width={20} height={20} /></Link>
+                        <Link aria-label="Telegram" href="#"><Image src="/icon/footer/telegram.svg" alt="telegram" width={20} height={20} /></Link>
                     </div>
                 </div>
 
