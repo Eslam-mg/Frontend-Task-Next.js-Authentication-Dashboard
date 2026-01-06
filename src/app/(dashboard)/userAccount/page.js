@@ -1,4 +1,5 @@
 "use client"
+import Navbar from '@/components/Navbar/Navbar';
 import ProtectedRoute from '@/components/ProtectedRoute/ProtectedRoute'
 import SubmitButton from '@/components/SubmitButton/SubmitButton';
 import { authAPI } from '@/lib/api';
@@ -51,6 +52,7 @@ export default function page() {
     }, []);
     return (
         <ProtectedRoute>
+            <Navbar/>
             {loading && (
                 <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
                     <div className="text-center">
