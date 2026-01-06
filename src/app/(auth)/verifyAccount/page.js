@@ -46,6 +46,27 @@ export default function page() {
             inputRefs.current[index - 1]?.focus();
         }
     };
+
+    // Handles paste event to allow pasting the full 6-digit verification code at once.
+    const handlePaste = (e) => {
+        e.preventDefault();
+        const pastedData = e.clipboardData.getData('text').slice(0, 6);
+
+        if (!/^\d+$/.test(pastedData)) {
+            return;
+        }
+
+        const newCode = pastedData.split('');
+        while (newCode.length < 6) {
+            newCode.push('');
+        }
+        setCode(newCode.slice(0, 6));
+
+        // Focus last filled input or first empty
+        const nextIndex = Math.min(pastedData.length, 5);
+        inputRefs.current[nextIndex]?.focus();
+    };
+
     return (
         <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
             <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
@@ -86,6 +107,7 @@ export default function page() {
                                 value={digit}
                                 onChange={(e) => handleChange(index, e.target.value)}
                                 onKeyDown={(e) => handleKeyDown(index, e)}
+                                onPaste={handlePaste}
                                 className="w-12 h-14 text-center text-2xl font-bold border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 transition-all"
                             />
                         ))}
