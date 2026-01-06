@@ -110,6 +110,27 @@ export default function page() {
         }
     };
 
+    const handleResendCode = async () => {
+        setResending(true);
+        setError('');
+        setSuccess('');
+
+        try {
+            const response = await authAPI.resendCode();
+
+            if (response.status) {
+                setSuccess('Verification code sent successfully!');
+                setCode(['', '', '', '', '', '']);
+                inputRefs.current[0]?.focus();
+            }
+        } catch (err) {
+            console.error('Resend error:', err);
+            setError(err.message || 'Failed to resend code. Please try again.');
+        } finally {
+            setResending(false);
+        }
+    };
+
     return (
         <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
             <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
@@ -143,7 +164,7 @@ export default function page() {
                                 ref={(el) => (inputRefs.current[index] = el)}
                                 type="text"
                                 inputMode="numeric"
-                                aria-label={`Digit ${index + 1}`} 
+                                aria-label={`Digit ${index + 1}`}
                                 aria-required="true"
                                 pattern="[0-9]*"
                                 maxLength={1}
@@ -169,6 +190,8 @@ export default function page() {
                 <div className="mt-6 text-center">
                     <p className="text-gray-600 mb-2">Didn't receive the code?</p>
                     <button
+                        type='button'
+                        onClick={handleResendCode}
                         disabled={resending}
                         aria-disabled={resending}
                         className="text-blue-600 hover:text-blue-700 font-medium disabled:opacity-50"
