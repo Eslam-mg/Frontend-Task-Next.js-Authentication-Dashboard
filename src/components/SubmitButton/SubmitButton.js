@@ -10,7 +10,7 @@ export default function SubmitButton({
     fullWidth = false,
     ...props
 }) {
-    const baseClasses = 'px-6 py-3 mt-4 rounded-lg font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed';
+    const baseClasses = 'px-6 py-3 mt-4 rounded-lg font-medium transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed';
 
     const variantClasses = {
         primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-4 focus:ring-blue-300',
@@ -25,6 +25,7 @@ export default function SubmitButton({
             type={type}
             onClick={onClick}
             disabled={disabled || loading}
+            aria-disabled={disabled || loading}
             aria-busy={loading}
             className={`${baseClasses} ${variantClasses[variant]} ${widthClass}`}
             {...props}
