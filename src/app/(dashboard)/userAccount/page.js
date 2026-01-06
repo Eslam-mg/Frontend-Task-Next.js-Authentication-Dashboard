@@ -1,4 +1,5 @@
 "use client"
+import Footer from '@/components/Footer/Footer';
 import Navbar from '@/components/Navbar/Navbar';
 import ProtectedRoute from '@/components/ProtectedRoute/ProtectedRoute'
 import SubmitButton from '@/components/SubmitButton/SubmitButton';
@@ -143,6 +144,8 @@ export default function page() {
                     </div>
                 </div>
             )}
+
+            <Footer/>
         </ProtectedRoute>
     )
 }
