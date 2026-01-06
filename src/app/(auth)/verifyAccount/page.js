@@ -67,6 +67,49 @@ export default function page() {
         inputRefs.current[nextIndex]?.focus();
     };
 
+    // Handles verification form submission
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        // Combines the 6-digit code
+        const verificationCode = code.join('');
+
+        // Validates input length
+        if (verificationCode.length !== 6) {
+            setError('Please enter all 6 digits');
+            return;
+        }
+
+        // Sends code to the API for verification
+        setLoading(true);
+        setError('');
+
+        try {
+            const response = await authAPI.verifyEmail(verificationCode);
+
+            if (response.status) {
+                setSuccess('Email verified successfully!');
+
+                // Update user data
+                const userData = authStorage.getUser();
+                if (userData) {
+                    userData.email_verified_at = true;
+                    authStorage.setUser(userData);
+                }
+
+                // Redirect to dashboard after a short delay
+                setTimeout(() => {
+                    router.push('/dashboard');
+                }, 1000);
+            }
+        } catch (err) {
+            console.error('Verification error:', err);
+            setError(err.message || 'Invalid verification code. Please try again.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
             <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
@@ -92,7 +135,7 @@ export default function page() {
                     </div>
                 )}
 
-                <form >
+                <form onSubmit={handleSubmit}>
                     <div className="flex justify-center gap-2 mb-6">
                         {code.map((digit, index) => (
                             <input
