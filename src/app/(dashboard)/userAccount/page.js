@@ -1,7 +1,10 @@
+import ProtectedRoute from '@/components/ProtectedRoute/ProtectedRoute'
 import React from 'react'
 
 export default function page() {
     return (
-        <div>userAccount</div>
+        <ProtectedRoute>
+            <div>userAccount</div>
+        </ProtectedRoute>
     )
 }
