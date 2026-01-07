@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
+import SimilarItems from '@/components/SimilarItems/SimilarItems';
 
 export default function page({ params }) {
     const [selectedColor, setSelectedColor] = useState('blue');
@@ -356,6 +357,9 @@ export default function page({ params }) {
                         </div>
                     </div>
                 </section>
+
+                {/* similar items */}
+                <SimilarItems/>
             </div>
         </div>
     );
