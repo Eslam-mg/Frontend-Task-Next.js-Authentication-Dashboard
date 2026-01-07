@@ -1,6 +1,7 @@
 # 🚀 Next.js Authentication Dashboard
 
-A modern, full-featured authentication system built with Next.js 16, featuring user registration, login, account verification, and a protected dashboard with product browsing capabilities.
+A modern, full-featured authentication system built with Next.js 16, featuring user registration, login, account verification, and a protected dashboard with product browsing capabilities. 
+# [live demo](https://frontend-task-next-js-authenticatio.vercel.app/).
 
 ## 📸 Preview
 
