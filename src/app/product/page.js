@@ -37,13 +37,21 @@ export default function page({ params }) {
     const incrementQuantity = () => setQuantity((prev) => prev + 1);
     const decrementQuantity = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
 
+    const ratings = [
+        { star: 5, percent: 67 },
+        { star: 4, percent: 15 },
+        { star: 3, percent: 6 },
+        { star: 2, percent: 3 },
+        { star: 1, percent: 9 },
+    ];
+
     return (
         <div className="min-h-screen bg-white">
             <div className='w-full h-52 bg-[#F5F5F5] flex items-center justify-center relative'>
                 <Image src="/image/3d-vertical-background-with-abstract-style.png" alt="vertical background with abstract style" fill className="object-cover" />
                 <div>
                     {/* Background Text */}
-                    <span style={{WebkitTextStroke: '.3px #9ca3af' }} className="absolute inset-0 flex items-center justify-center text-[80px] font-bold text-[#0000000D]/5 opacity-30 select-none">Product Details</span>
+                    <span style={{ WebkitTextStroke: '.3px #9ca3af' }} className="absolute inset-0 flex items-center justify-center text-[80px] font-bold text-[#0000000D]/5 opacity-30 select-none">Product Details</span>
                     <div className='font-semibold text-4xl'>Product Details</div>
                 </div>
             </div>
@@ -247,6 +255,107 @@ export default function page({ params }) {
                         </div>
                     </div>
                 </div>
+
+                {/* Reviews Section */}
+                <section className="max-w-6xl mx-auto px-4 py-10">
+                    {/* Top Section */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                        {/* Left */}
+                        <div className="md:col-span-2">
+                            <h3 className="font-semibold text-lg mb-4 relative">Rating & Reviews <span className='bg-primary h-1 w-8 rounded-2xl absolute -bottom-1 left-0' /></h3>
+
+                            <div className="flex flex-col md:flex-row gap-8">
+                                {/* Rating */}
+                                <div className='flex items-end justify-center gap-3'>
+                                    <div className="text-7xl md:text-9xl font-bold">4.5</div>
+                                    <span className="text-gray-400 text-2xl">/ 5</span>
+                                </div>
+
+                                {/* Bars */}
+                                <div className="flex-1 space-y-2">
+                                    {ratings.map((item) => (
+                                        <div key={item.star} className="flex items-center gap-2">
+                                            <div className="flex items-center gap-1 w-10">
+                                                <Image src="/icon/star.svg" alt='star' width={20} height={20} className="fill-primary text-primary" />
+                                                <span className="text-sm">{item.star}</span>
+                                            </div>
+
+                                            <div className="flex-1 h-2 bg-gray-200 rounded">
+                                                <div
+                                                    className="h-2 bg-primary rounded"
+                                                    style={{ width: `${item.percent}%` }}
+                                                />
+                                            </div>
+
+                                            <span className="text-sm text-gray-500 w-10 text-right">
+                                                %{item.percent}
+                                            </span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Right */}
+                        <div className="hidden md:flex flex-col justify-between items-start md:items-end">
+                            <div className="text-center">
+                                <p className="text-gray-400 text-base mb-4">Total Reviews</p>
+                                <p className="text-6xl font-semibold">3.0K</p>
+                            </div>
+
+                            <button className="flex items-center justify-center gap-2 mt-4 bg-primary text-white px-5 py-2 rounded-lg text-sm hover:opacity-90">
+                                <span>Add Comment</span>
+                                <Image src="/icon/chat.svg" alt='chat' width={20} height={20} />
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Reviews List */}
+                    <div className="mt-10 space-y-6">
+                        {[1, 2, 3, 4].map((item) => (
+                            <div key={item} className="border-b pb-6">
+                                <div className="flex justify-between items-center mb-2">
+                                    <div className='flex items-center justify-center gap-2'>
+                                        <h4 className="font-semibold">Alex Daewn</h4>
+                                        <div className="flex">
+                                            {Array.from({ length: 4 }).map((_, i) => (
+                                                <Image
+                                                    key={i}
+                                                    src="/icon/star.svg"
+                                                    alt='star'
+                                                    width={14}
+                                                    height={14}
+                                                    className="fill-primary text-primary"
+                                                />
+                                            ))}
+                                            <Image
+                                                src="/icon/star.svg"
+                                                alt='star'
+                                                width={14}
+                                                height={14}
+                                                className="fill-primary text-primary opacity-35"
+                                            />
+                                        </div>
+                                    </div>
+                                    <span className="text-xs text-gray-400">4 months ago</span>
+                                </div>
+
+                                <p className="text-sm text-gray-600 leading-relaxed">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam
+                                    nonummy Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                        ))}
+
+                        <div className="text-center relative">
+                            <Image src="/image/logo-without-text.png" alt='logo-without-text' width={90} height={41} className='hidden md:block absolute -top-4 left-0'/>
+                            <button className="text-sm bg-[#F5F5F5] text-primary px-6 h-14 rounded-lg cursor-pointer">
+                                View More Comments
+                            </button>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     );
