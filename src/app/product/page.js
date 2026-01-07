@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Navbar from '@/components/Navbar/Navbar';
+import Footer from '@/components/Footer/Footer';
 
 export default function page({ params }) {
     const [selectedColor, setSelectedColor] = useState('blue');
@@ -37,9 +39,18 @@ export default function page({ params }) {
 
     return (
         <div className="min-h-screen bg-white">
-            {/* Breadcrumb */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-                <nav className="flex items-center gap-2 text-sm">
+            <div className='w-full h-52 bg-[#F5F5F5] flex items-center justify-center relative'>
+                <Image src="/image/3d-vertical-background-with-abstract-style.png" alt="vertical background with abstract style" fill className="object-cover" />
+                <div>
+                    {/* Background Text */}
+                    <span style={{WebkitTextStroke: '.3px #9ca3af' }} className="absolute inset-0 flex items-center justify-center text-[80px] font-bold text-[#0000000D]/5 opacity-30 select-none">Product Details</span>
+                    <div className='font-semibold text-4xl'>Product Details</div>
+                </div>
+            </div>
+            {/* Main Content */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                {/* Breadcrumb */}
+                <div className="flex items-center gap-2 text-sm w-full px-4 sm:px-6 lg:px-8 py-4 mb-8 rounded-2xl bg-[#ECECEC66]">
                     <Link href="/" className="text-gray-900 font-medium hover:text-gray-600">
                         Home
                     </Link>
@@ -49,11 +60,7 @@ export default function page({ params }) {
                     </Link>
                     <span className="text-gray-400">›</span>
                     <span className="text-gray-400">Product Details</span>
-                </nav>
-            </div>
-
-            {/* Main Content */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                     {/* Left Side - Image Gallery */}
                     <div className="space-y-4">
@@ -94,8 +101,7 @@ export default function page({ params }) {
                                 <button
                                     key={index}
                                     onClick={() => setSelectedImage(index)}
-                                    className={`relative aspect-square bg-linear-to-b from-gray-200 to-gray-100 rounded-2xl overflow-hidden border-2 transition-all ${selectedImage === index ? 'border-gray-800 scale-105' : 'border-transparent hover:border-gray-300'
-                                        }`}
+                                    className={`relative aspect-square bg-linear-to-b from-gray-200 to-gray-100 rounded-2xl overflow-hidden border-2 transition-all ${selectedImage === index ? 'border-gray-800 scale-105' : 'border-transparent hover:border-gray-300'}`}
                                 >
                                     <Image
                                         src={img}
@@ -176,9 +182,8 @@ export default function page({ params }) {
                             <label className="block text-sm font-medium text-gray-900">Colors</label>
                             <div className="flex items-center gap-3">
                                 {colors.map((color) => (
-                                    <div className='relative'>
+                                    <div key={color.name} className='relative'>
                                         <button
-                                            key={color.name}
                                             onClick={() => setSelectedColor(color.name)}
                                             className={`w-14 h-14 rounded-full flex items-center justify-center bg-[#F4F7F9] transition-all ${selectedColor === color.name ? 'ring-2 ring-offset-2 ring-gray-900' : ''} cursor-pointer`}
                                             aria-label={color.label}

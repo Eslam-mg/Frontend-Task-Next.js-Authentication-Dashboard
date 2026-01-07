@@ -60,7 +60,7 @@ export default function Footer() {
                         />
                         <button
                             type="submit"
-                            className="rounded-lg bg-[#BE968E] px-6 font-medium cursor-pointer"
+                            className="rounded-lg bg-primary px-6 font-medium cursor-pointer"
                         >
                             Send
                         </button>
