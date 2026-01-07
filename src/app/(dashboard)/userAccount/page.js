@@ -54,7 +54,6 @@ export default function page() {
     }, []);
     return (
         <ProtectedRoute>
-            <Navbar />
             {loading && (
                 <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
                     <div className="text-center">
@@ -150,8 +149,6 @@ export default function page() {
 
                 </div>
             )}
-
-            <Footer />
         </ProtectedRoute>
     )
 }
