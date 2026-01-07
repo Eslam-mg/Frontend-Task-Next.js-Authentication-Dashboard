@@ -5,6 +5,7 @@ import ProtectedRoute from '@/components/ProtectedRoute/ProtectedRoute'
 import SubmitButton from '@/components/SubmitButton/SubmitButton';
 import { authAPI } from '@/lib/api';
 import { authStorage } from '@/lib/auth';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
@@ -53,7 +54,7 @@ export default function page() {
     }, []);
     return (
         <ProtectedRoute>
-            <Navbar/>
+            <Navbar />
             {loading && (
                 <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
                     <div className="text-center">
@@ -141,11 +142,16 @@ export default function page() {
                                 </div>
                             </div>
                         </div>
+
+                        <Link href="/product" className='w-full mt-8 p-4 bg-primary text-white rounded-2xl flex items-center justify-center'>
+                            <span className='text-2xl md:text-4xl font-semibold'>show product details</span>
+                        </Link>
                     </div>
+
                 </div>
             )}
 
-            <Footer/>
+            <Footer />
         </ProtectedRoute>
     )
 }
