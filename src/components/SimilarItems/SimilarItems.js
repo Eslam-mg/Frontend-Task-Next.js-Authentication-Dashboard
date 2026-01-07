@@ -42,7 +42,7 @@ const products = [
 
 export default function SimilarItems() {
     return (
-        <section className="max-w-7xl mx-auto px-4 py-12">
+        <section className="py-12">
 
             {/* Title */}
             <div className="mb-6">

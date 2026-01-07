@@ -258,7 +258,7 @@ export default function page({ params }) {
                 </div>
 
                 {/* Reviews Section */}
-                <section className="max-w-6xl mx-auto px-4 py-10">
+                <section className="py-10">
                     {/* Top Section */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
