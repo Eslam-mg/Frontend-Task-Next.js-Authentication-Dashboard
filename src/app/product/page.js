@@ -23,7 +23,7 @@ export default function page({ params }) {
         '/image/young-adult-man-wearing-hoodie.png',
         '/image/white-hoodie.png',
         '/image/red-hoodie.png',
-        '/image/black-hoodie.jpg',
+        '/image/black-hoodie.png',
     ];
 
     const handlePrevImage = () => {
@@ -105,7 +105,7 @@ export default function page({ params }) {
 
                         {/* Thumbnails */}
                         <div className="grid grid-cols-3 gap-4">
-                            {images.map((img, index) => (
+                            {images.filter((_, index) => index !== selectedImage).map((img, index) => (
                                 <button
                                     key={index}
                                     onClick={() => setSelectedImage(index)}
@@ -193,10 +193,10 @@ export default function page({ params }) {
                                     <div key={color.name} className='relative'>
                                         <button
                                             onClick={() => setSelectedColor(color.name)}
-                                            className={`w-14 h-14 rounded-full flex items-center justify-center bg-[#F4F7F9] transition-all ${selectedColor === color.name ? 'ring-2 ring-offset-2 ring-gray-900' : ''} cursor-pointer`}
+                                            className={`w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center bg-[#F4F7F9] transition-all ${selectedColor === color.name ? 'ring-2 ring-offset-2 ring-gray-900' : ''} cursor-pointer`}
                                             aria-label={color.label}
                                         >
-                                            <div className="w-8 h-8 rounded-full" style={{ backgroundColor: color.value }} />
+                                            <div className="w-7 h-7 md:w-8 md:h-8 rounded-full" style={{ backgroundColor: color.value }} />
                                         </button>
 
                                         <div className='absolute -bottom-7 left-1/2 -translate-x-1/2'>
@@ -210,14 +210,14 @@ export default function page({ params }) {
                         </div>
 
                         {/* Quantity and Add to Cart */}
-                        <div className="space-y-4 pt-4">
+                        <div className="space-y-2 pt-2">
                             <div className="flex items-center justify-between mt-4">
                                 <span className="text-sm font-medium text-gray-900">
                                     Quantity <span className="text-[#8A8A8A]">($300.00 for Piece)</span>
                                 </span>
                             </div>
 
-                            <div className="flex items-center gap-4">
+                            <div className="flex flex-row flex-wrap items-center gap-4">
                                 {/* Quantity Selector */}
                                 <div className="flex items-center bg-[#F5F5F5] p-2 rounded-xl overflow-hidden">
                                     <button
@@ -247,7 +247,7 @@ export default function page({ params }) {
                                 <span className="text-2xl font-bold text-gray-900">$300.00</span>
 
                                 {/* Add to Cart Button */}
-                                <button className="flex-1 bg-primary text-white font-medium py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors">
+                                <button className="flex-1 min-w-2xs bg-primary text-white font-medium py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors">
                                     Add To Cart
                                     <Image src="/icon/shopping-bag-2.svg" alt="shopping bag icon" width={20} height={20} className="brightness-0 invert" />
                                 </button>
