@@ -1,7 +1,7 @@
 "use client"
 import SubmitButton from '@/components/SubmitButton/SubmitButton';
 import { useRouter } from 'next/navigation';
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 export default function page() {
     // State to store 6-digit verification code and loading/error states
