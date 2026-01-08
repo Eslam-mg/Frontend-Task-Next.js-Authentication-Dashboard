@@ -1,7 +1,22 @@
+"use client"
+import { authStorage } from "@/lib/auth";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Home() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = authStorage.getToken();
+
+    if (token) {
+      router.push('/userAccount');
+    } else {
+      router.push('/');
+    }
+  }, [router]);
   return (
     <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
